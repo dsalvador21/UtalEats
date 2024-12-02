@@ -14,7 +14,6 @@ import java.util.Arrays;
 
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
-
     @Autowired
     private AccountRepository accountRepository;
 
@@ -64,4 +63,5 @@ public class DatabaseSeeder implements CommandLineRunner {
 
         profileRepository.saveAll(Arrays.asList(profile1, profile2, profile3));
     }
+    
 }
