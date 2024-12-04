@@ -1,0 +1,13 @@
+package com.icc.orders_svc.repositories;
+
+import com.icc.orders_svc.models.Order;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface OrderRepository extends JpaRepository<Order, Long> {
+    Optional<List<Order>> findOrdersByAccountId(Long accountId);
+}

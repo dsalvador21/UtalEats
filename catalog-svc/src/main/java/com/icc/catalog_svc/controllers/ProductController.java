@@ -9,7 +9,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
-
     private final ProductService productService;
 
     public ProductController(ProductService productService) {
@@ -20,4 +19,5 @@ public class ProductController {
     public List<Product> getProductsByStore(@RequestParam("storeId") Long storeId) {
         return productService.getProductsByStore(storeId).orElse(List.of());
     }
+
 }
