@@ -1,4 +1,4 @@
-package src.main.java.com.icc.ratings_svc.repositories;
+package com.icc.ratings_svc.repositories;
 
 import src.main.java.com.icc.ratings_svc.models.Rating;
 import org.springframework.data.repository.CrudRepository;

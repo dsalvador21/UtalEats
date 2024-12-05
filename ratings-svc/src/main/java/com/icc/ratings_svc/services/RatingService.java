@@ -1,4 +1,4 @@
-package src.main.java.com.icc.ratings_svc.services;
+package com.icc.ratings_svc.services;
 
 import org.springframework.stereotype.Service;
 import src.main.java.com.icc.ratings_svc.models.Rating;
