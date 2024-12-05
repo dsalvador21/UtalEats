@@ -15,8 +15,10 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping
+    @CrossOrigin(origins = "*")
+    @GetMapping("")
     public List<Product> getProductsByStore(@RequestParam("storeId") Long storeId) {
+        System.out.println("Hola");
         return productService.getProductsByStore(storeId).orElse(List.of());
     }
 
