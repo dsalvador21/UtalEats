@@ -1,8 +1,8 @@
-package src.main.java.com.icc.ratings_svc.services;
+package com.icc.ratings_svc.services;
 
+import com.icc.ratings_svc.models.Rating;
+import com.icc.ratings_svc.repositories.RatingRepository;
 import org.springframework.stereotype.Service;
-import src.main.java.com.icc.ratings_svc.models.Rating;
-import src.main.java.com.icc.ratings_svc.repositories.RatingRepository;
 
 import java.util.List;
 import java.util.Optional;

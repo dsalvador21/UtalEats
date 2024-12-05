@@ -1,4 +1,4 @@
-package src.main.java.com.icc.ratings_svc.models;
+package com.icc.ratings_svc.models;
 
 import jakarta.persistence.*;
 

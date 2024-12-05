@@ -1,4 +1,4 @@
-package src.main.java.com.icc.ratings_svc.domain;
+package com.icc.ratings_svc.domain;
 
 public class RatingDTO {
     private Long id;

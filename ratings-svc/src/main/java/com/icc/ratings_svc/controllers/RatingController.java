@@ -1,12 +1,12 @@
-package src.main.java.com.icc.ratings_svc.controllers;
+package com.icc.ratings_svc.controllers;
 
-import src.main.java.com.icc.ratings_svc.models.Rating;
-import src.main.java.com.icc.ratings_svc.services.RatingService;
+import com.icc.ratings_svc.models.Rating;
+import com.icc.ratings_svc.services.RatingService;
 import org.springframework.web.bind.annotation.*;
-
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/rating")
