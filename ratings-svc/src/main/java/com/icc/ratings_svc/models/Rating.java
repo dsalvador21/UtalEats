@@ -14,13 +14,13 @@ public class Rating {
     @Column(nullable = false)
     private String comment;
 
-    /* @ManyToOne
-    @JoinColumn(name = "store_id", nullable = false)
-    private Store store; no se que tiene que ir aca  */
+    @Column(nullable = false)
+    private Long storeId; // Referencia al ID de la tienda en el servicio de catálogo
 
-    public Rating(short score, String comment) {
+    public Rating(short score, String comment, Long storeId) {
         this.score = score;
         this.comment = comment;
+        this.storeId = storeId;
     }
 
     public Rating() {
@@ -48,5 +48,13 @@ public class Rating {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Long getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
     }
 }
