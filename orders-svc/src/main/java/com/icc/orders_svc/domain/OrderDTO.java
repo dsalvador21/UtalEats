@@ -4,6 +4,7 @@ import java.util.List;
 
 public class OrderDTO {
     private Long accountId;
+    private Long storeId;
     private List<Long> productsIds;
 
     public OrderDTO() {}
@@ -22,6 +23,14 @@ public class OrderDTO {
 
     public void setProductsIds(List<Long> productsIds) {
         this.productsIds = productsIds;
+    }
+
+    public Long getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
     }
 
 }

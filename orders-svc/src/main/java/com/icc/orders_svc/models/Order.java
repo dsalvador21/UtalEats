@@ -15,6 +15,9 @@ public class Order {
     @Column(nullable = false)
     private Long accountId;
 
+    @Column(nullable = false)
+    private Long storeId;
+
     @ElementCollection
     private List<Long> productsIds;
 
@@ -23,9 +26,10 @@ public class Order {
 
     public Order() {}
 
-    public Order(Long orderId, Long accountId, List<Long> productsIds, LocalDateTime orderDate) {
+    public Order(Long orderId, Long accountId, Long storeId, List<Long> productsIds, LocalDateTime orderDate) {
         this.orderId = orderId;
         this.accountId = accountId;
+        this.storeId = storeId;
         this.productsIds = productsIds;
         this.orderDate = orderDate;
     }
@@ -60,6 +64,14 @@ public class Order {
 
     public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
+    }
+
+    public Long getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
     }
 
 }

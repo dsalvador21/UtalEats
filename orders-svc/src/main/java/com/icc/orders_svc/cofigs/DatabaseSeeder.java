@@ -27,16 +27,19 @@ public class DatabaseSeeder implements CommandLineRunner {
     private void seedDatabase() {
         Order order = new Order();
         order.setAccountId(1L);
+        order.setStoreId(1L);
         order.setProductsIds(List.of(1L, 2L, 3L, 4L, 5L));
         order.setOrderDate(LocalDateTime.now());
 
         Order order2 = new Order();
         order2.setAccountId(1L);
+        order2.setStoreId(2L);
         order2.setProductsIds(List.of(6L, 7L, 8L, 13L, 15L));
         order2.setOrderDate(LocalDateTime.now().plusMinutes(10));
 
         Order order3 = new Order();
         order3.setAccountId(2L);
+        order3.setStoreId(3L);
         order3.setProductsIds(List.of(12L, 15L, 17L));
         order3.setOrderDate(LocalDateTime.now().plusMinutes(20));
 

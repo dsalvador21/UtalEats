@@ -21,6 +21,7 @@ public class OrderController {
     public ResponseEntity<Order> register(@RequestBody OrderDTO orderDTO) {
         Order savedOrder = orderService.register(
                 orderDTO.getAccountId(),
+                orderDTO.getStoreId(),
                 orderDTO.getProductsIds()
         );
         return ResponseEntity.ok().body(savedOrder);

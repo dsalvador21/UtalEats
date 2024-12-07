@@ -14,9 +14,10 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    public Order register(Long accountId, List<Long> productsIds) {
+    public Order register(Long accountId, Long storeId, List<Long> productsIds) {
         Order order = new Order();
         order.setAccountId(accountId);
+        order.setStoreId(storeId);
         order.setProductsIds(productsIds);
         order.setOrderDate(LocalDateTime.now());
         orderRepository.save(order);
