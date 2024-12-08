@@ -9,21 +9,25 @@ public class Rating {
     private Long id;
 
     @Column(nullable = false)
-    private short score;
+    private Long accountId;
+
+    @Column(nullable = false, unique = true)
+    private Long storeId;
+
+    @Column(nullable = false)
+    private Double score;
 
     @Column(nullable = false)
     private String comment;
 
-    @Column(nullable = false)
-    private Long storeId; // Referencia al ID de la tienda en el servicio de catálogo
+    public Rating() {}
 
-    public Rating(short score, String comment, Long storeId) {
+    public Rating(Long id, Long accountId, Long storeId, Double score, String comment) {
+        this.id = id;
+        this.accountId = accountId;
+        this.storeId = storeId;
         this.score = score;
         this.comment = comment;
-        this.storeId = storeId;
-    }
-
-    public Rating() {
     }
 
     public Long getId() {
@@ -34,11 +38,27 @@ public class Rating {
         this.id = id;
     }
 
-    public short getScore() {
+    public Long getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
+    }
+
+    public Long getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
+    }
+
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(short score) {
+    public void setScore(Double score) {
         this.score = score;
     }
 
@@ -50,11 +70,4 @@ public class Rating {
         this.comment = comment;
     }
 
-    public Long getStoreId() {
-        return storeId;
-    }
-
-    public void setStoreId(Long storeId) {
-        this.storeId = storeId;
-    }
 }

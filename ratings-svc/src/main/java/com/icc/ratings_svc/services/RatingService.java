@@ -2,6 +2,7 @@ package com.icc.ratings_svc.services;
 
 import com.icc.ratings_svc.models.Rating;
 import com.icc.ratings_svc.repositories.RatingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,29 +11,39 @@ import java.util.Optional;
 
 @Service
 public class RatingService {
-    private final RatingRepository ratingRepository;
-    private final RestTemplate restTemplate;
-
-    public RatingService(RatingRepository ratingRepository, RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-        this.ratingRepository = ratingRepository;
-    }
+    @Autowired
+    private RatingRepository ratingRepository;
 
     public Optional<List<Rating>> getRatingsByStoreId(Long storeId){
         return Optional.ofNullable(ratingRepository.findByStoreId(storeId));
     }
 
-    public Rating addRating(Rating rating) {
-        // Validar si el storeId existe en el servicio de catalog
-        String catalogUrl = "http://localhost:8082/store/" + rating.getStoreId();
-        Boolean storeExists = restTemplate.getForObject(catalogUrl, Boolean.class);
+    public Double getScoreByStoreId(Long storeId) {
+        List<Rating> ratings = ratingRepository.findByStoreId(storeId);
+        Double sum = 0.0;
 
-        if (storeExists != null && storeExists) {
-            return ratingRepository.save(rating);
-        } else {
-            throw new IllegalArgumentException("Store ID not found in Catalog Service");
+        for (Rating rating : ratings) {
+            sum += rating.getScore();
         }
+
+        if (ratings.size() == 0) {
+            return 0.0; // Manejo de divisiones por 0
+        }
+
+        Double average = sum / ratings.size();
+
+        // Redondear a un decimal
+        return Math.round(average * 10.0) / 10.0;
     }
 
 
+    public Rating addRating(Long accountId, Long storeId, Double score, String comment) {
+        Rating rating = new Rating();
+        rating.setAccountId(accountId);
+        rating.setStoreId(storeId);
+        rating.setScore(score);
+        rating.setComment(comment);
+        return ratingRepository.save(rating);
+    }
+    
 }

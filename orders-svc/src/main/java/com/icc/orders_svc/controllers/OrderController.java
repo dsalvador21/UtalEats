@@ -12,6 +12,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/order")
+@CrossOrigin(origins = "*")
+
 public class OrderController {
     @Autowired
     private OrderService orderService;
@@ -31,7 +33,7 @@ public class OrderController {
     @GetMapping("")
     public ResponseEntity<List<Order>> getOrders(@RequestParam("accountId") Long accountId) {
         Optional<List<Order>> orders = orderService.getOrdersByAccount(accountId);
-
+        System.out.println(orders.get());
         if (orders.isPresent()) {
             return ResponseEntity.ok().body(orders.get());
         } else {

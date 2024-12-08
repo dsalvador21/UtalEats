@@ -12,11 +12,12 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/store")
+@CrossOrigin(origins = "*")
 public class StoreController {
     @Autowired
     private StoreService storeService;
 
-    @CrossOrigin(origins = "*")
+
     @GetMapping("")
     public ResponseEntity<List<Store>> getStores(@RequestParam("city") String city) {
         Optional<List<Store>> stores = storeService.getStoresByCity(city);

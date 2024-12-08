@@ -52,7 +52,7 @@ public class CatalogSeeder implements CommandLineRunner {
         Product product1= new Product (null, "Hamburguesa", "urlimagen1",5000, store1);
         Product product2= new Product (null, "Papas fritas", "urlimagen2",2500, store1);
         Product product3= new Product (null, "Nuggets", "urlimagen3",2000, store1);
-      Product product4= new Product (null, "Pizza", "urlimagen4",12000, store1);
+        Product product4= new Product (null, "Pizza", "urlimagen4",12000, store1);
         Product product5= new Product (null, "Pollo frito", "urlimagen5",8000, store1);
 
         Product product6= new Product (null, "Arroz chaufan", "urlimagen6",5000, store2);

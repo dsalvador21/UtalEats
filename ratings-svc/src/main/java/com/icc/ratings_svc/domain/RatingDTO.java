@@ -1,29 +1,26 @@
 package com.icc.ratings_svc.domain;
 
 public class RatingDTO {
-    private Long id;
+    private Long accountId;
     private Long storeId;
-    private Long userId;
     private Double score;
     private String comment;
 
-    public RatingDTO(){
+    public RatingDTO(){}
 
-    }
-    public RatingDTO(Long id, Long storeId, Long userId, Double score, String comment) {
-        this.id = id;
+    public RatingDTO(Long storeId, Long accountId, Double score, String comment) {
+        this.accountId = accountId;
         this.storeId = storeId;
-        this.userId = userId;
         this.score = score;
         this.comment = comment;
     }
 
-    public Long getId() {
-        return id;
+    public Long getAccountId() {
+        return accountId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
     }
 
     public Long getStoreId() {
@@ -32,14 +29,6 @@ public class RatingDTO {
 
     public void setStoreId(Long storeId) {
         this.storeId = storeId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public Double getScore() {
@@ -57,14 +46,5 @@ public class RatingDTO {
     public void setComment(String comment) {
         this.comment = comment;
     }
-    @Override
-    public String toString() {
-        return "RatingDTO{" +
-                "id=" + id +
-                ", storeId=" + storeId +
-                ", userId=" + userId +
-                ", score=" + score +
-                ", comment='" + comment + '\'' +
-                '}';
-    }
+
 }
