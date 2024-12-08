@@ -18,6 +18,9 @@ public class Profile {
     @Column(nullable = false)
     private String phone;
 
+    @Column(nullable = false)
+    private String address;
+
     public Profile(){}
 
     public Profile(Long id, Account account, String name, String phone) {
@@ -61,5 +64,14 @@ public class Profile {
     public Profile setPhone(String phone) {
         this.phone = phone;
         return this;
+    }
+
+    public Profile setAddress(String address){
+        this.address = address;
+        return this;
+    }
+
+    public String getAddress(){
+        return address;
     }
 }

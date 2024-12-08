@@ -23,7 +23,7 @@ public class AccountService {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Transactional
-    public Account register(String email, String password, String name, String phone) {
+    public Account register(String email, String password, String name, String phone, String address) {
         Account account = new Account();
         account.setEmail(email);
         account.setPassword(passwordEncoder.encode(password));
@@ -33,6 +33,7 @@ public class AccountService {
         profile.setAccount(account);
         profile.setName(name);
         profile.setPhone(phone);
+        profile.setAddress(address);
         profileRepository.save(profile);
 
         return account;

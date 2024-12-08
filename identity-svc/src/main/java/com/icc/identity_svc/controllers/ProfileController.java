@@ -16,7 +16,7 @@ public class ProfileController {
 
     @CrossOrigin(origins = "*")
     @GetMapping("")
-    public ResponseEntity<Profile> getProfile(@RequestParam Long accountId) {
+    public ResponseEntity<Profile> getProfile(@RequestParam("accountId") Long accountId) {
         Optional<Profile> profileOpt = profileService.getProfileByAccountId(accountId);
         if (profileOpt.isPresent()) {
             return ResponseEntity.ok(profileOpt.get());

@@ -5,6 +5,7 @@ public class AccountProfileDTO {
     private String password;
     private String name;
     private String phone;
+    private String address;
 
     public AccountProfileDTO(){}
 
@@ -42,6 +43,10 @@ public class AccountProfileDTO {
     public AccountProfileDTO setPhone(String phone) {
         this.phone = phone;
         return this;
+    }
+
+    public String getAddress(){
+        return address;
     }
 
 }
