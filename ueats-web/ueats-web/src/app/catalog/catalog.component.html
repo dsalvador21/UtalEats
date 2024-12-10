@@ -1,0 +1,47 @@
+<div class="store-container">
+  <h1>Lista de Tiendas 🏪</h1>
+
+  <div *ngIf="loading">Cargando tiendas...</div>
+  <div *ngIf="!loading && errorMessage">{{ errorMessage }}</div>
+
+  <ul *ngIf="!loading && stores.length > 0; else noStores" class="store-list">
+    <li *ngFor="let store of stores" class="store-item">
+      <img [src]="store.logoUrl" alt="Logo de {{ store.name }}" class="store-logo">
+      <h3>{{ store.name }}</h3>
+      <p><strong>Categoría:</strong> {{ store.category }}</p>
+      <p><strong>Ciudad:</strong> {{ store.city }}</p>
+      <p><strong>Rating:</strong> {{ store.rating }}</p>
+
+      <div class="store-actions">
+        <button (click)="goToProduct(store.id)" class="view-products-button">Ver Productos</button>
+        <button (click)="toggleComments(store.id)" class="view-comments-button">Ver Comentarios</button>
+      </div>
+
+      <div *ngIf="selectedStoreId === store.id">
+        <div *ngIf="store.showComments" class="store-comments">
+          <h4>Comentarios:</h4>
+          <ul>
+            <li *ngFor="let comment of store.comments" class="comment-item">
+              <div class="comment">
+                <p>{{ comment.comment }}</p>
+                <div class="comment-score">
+                  <span *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                    <i
+                      class="fa-star"
+                      [class.fas]="i < comment.score"
+                      [class.far]="i >= comment.score"
+                    ></i>
+                  </span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <ng-template #noStores>
+    <p>No hay tiendas disponibles en esta ciudad.</p>
+  </ng-template>
+</div>

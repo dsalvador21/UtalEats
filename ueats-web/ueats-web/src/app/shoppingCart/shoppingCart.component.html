@@ -1,0 +1,27 @@
+<div *ngIf="loading">Cargando carrito...</div>
+<div *ngIf="!loading && cartItems.length === 0">El carrito está vacío.</div>
+<div *ngIf="!loading && cartItems.length > 0">
+  <h2>Carrito de compras</h2>
+  <div class="cart-items">
+    <div class="cart-item" *ngFor="let item of cartItems">
+      <h3>{{ item.name }}</h3>
+      <p>Precio: {{ item.price | currency }}</p>
+      <p>Cantidad: {{ item.quantity }}</p>
+      <button (click)="removeFromCart(item.id)" class="delete-button">Eliminar</button>
+      <div *ngIf="item.removed" class="removed-message">
+        Producto eliminado
+      </div>
+    </div>
+  </div>
+  <hr />
+  <p><strong>Precio total:</strong> {{ totalPrice | currency }}</p>
+  <div class="cart-buttons">
+    <button (click)="checkout()" class="checkout-button">Realizar Pedido</button>
+    <button (click)="clearCart()" class="clear-cart-button">Limpiar Carrito</button>
+  </div>
+</div>
+<div *ngIf="orderCompleted">
+  <h2>¡Gracias por tu pedido!</h2>
+  <app-ratings (ratingSubmitted)="onRatingSubmitted($event)"></app-ratings>
+</div>
+<div *ngIf="errorMessage">{{ errorMessage }}</div>

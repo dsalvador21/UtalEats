@@ -1,0 +1,38 @@
+<div class="historial-container">
+  <h1>Historial de Pedidos 🛒</h1>
+
+  <div *ngIf="loading" class="loading-message">Cargando historial de pedidos...</div>
+
+  <div *ngIf="!loading && errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <ul *ngIf="!loading && orderHistory.length > 0; else noOrders" class="order-list">
+    <li *ngFor="let order of orderHistory; let i = index" class="order-item">
+      <div class="order-summary">
+        <h3 class="order-title">Pedido #{{ order.OrderId }}</h3>
+        <button class="button" (click)="toggleDetails(i)">
+          {{ order.showDetails ? 'Ocultar Detalles' : 'Ver Detalles' }}
+        </button>
+      </div>
+
+      <div class="order-details" *ngIf="order.showDetails">
+        <h4>Detalles del Pedido:</h4>
+        <p><strong>Tienda:</strong> {{ order.storeName || 'Cargando...' }}</p>
+        <ul>
+          <li *ngFor="let product of order.productDetails">
+            <span>{{ product.name }}</span>
+            <span class="product-price"><em>${{ product.price }}</em></span>
+          </li>
+        </ul>
+        <p class="total-price"><strong>Total:</strong> ${{ calculateTotalPrice(i) }}</p>
+      </div>
+    </li>
+  </ul>
+
+  <ng-template #noOrders>
+    <div class="no-orders-message">
+      <p>No hay pedidos en el historial.</p>
+    </div>
+  </ng-template>
+</div>

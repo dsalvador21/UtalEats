@@ -1,0 +1,27 @@
+<nav *ngIf="isAuthenticated" class="navbar d-flex justify-content-between align-items-center border-bottom">
+  <a class="navbar-brand" href="javascript:void(0);" (click)="goToCatalog()">
+    <img src="../assets/images/forks.webp" width="64" height="64" class="d-inline-block align-top" alt="Logo de Utal Eats">
+    <span>Utal Eats</span>
+  </a>
+  <div class="d-flex align-items-center">
+    <div class="profile-container d-flex align-items-center me-3" (click)="toggleDropdown()" [class.active]="dropdownOpen">
+      <img src="assets/images/defaultImage.png" width="40" alt="Foto de perfil del usuario" class="profile-img">
+      <div class="profile-info ms-2">
+        <h6 class="mb-0">{{ username }}</h6>
+        <small>{{ email }}</small>
+      </div>
+
+      <div *ngIf="dropdownOpen" class="dropdown-menu">
+        <button class="dropdown-item" (click)="viewStories()">Ver Pedidos</button>
+        <button class="dropdown-item" (click)="logout()">Cerrar Sesión</button>
+      </div>
+    </div>
+    <button (click)="goToShoppingCart()" class="btn btn-light btn-sm shoppingCart-button">
+      <img src="../assets/images/shoppingCart.png" alt="Carrito" class="cart-icon" />
+      Carrito
+    </button>
+  </div>
+</nav>
+<div class="container" style="padding-top: 36px">
+  <router-outlet></router-outlet>
+</div>

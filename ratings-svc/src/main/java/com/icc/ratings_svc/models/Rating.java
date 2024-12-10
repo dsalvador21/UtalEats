@@ -11,7 +11,7 @@ public class Rating {
     @Column(nullable = false)
     private Long accountId;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private Long storeId;
 
     @Column(nullable = false)
